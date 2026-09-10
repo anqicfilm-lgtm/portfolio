@@ -11,8 +11,8 @@ const verticals = [
 ];
 
 const shortFilms = [
-  { title: 'Still Water', cn: '死水', image: '/assets/still-water.jpg', role: 'Producer', format: 'Short Film', info: 'An intimate story between two women — tracing closeness, memory, and the distance that grows between them.' },
-  { title: 'OYOT', cn: '', image: '/assets/oyot.png', role: 'Producer', format: 'Short Film', info: 'A young girl journeys into the desert to find the father who left home — a story about family, fractures, letting go, and growing into herself.' },
+  { title: 'Still Water', cn: '死水', image: '/assets/still-water.jpg', role: 'Producer', format: 'Short Film', info: 'An intimate story between two women — tracing closeness, memory, and the distance that grows between them.', link: '' },
+  { title: 'OYOT', cn: '', image: '/assets/oyot.png', role: 'Producer', format: 'Short Film', info: 'A Korean immigrant girl visits her estranged father in the desert to reconnect over Christmas. Confronted by his new life, she must face the fractures between them, let go, and grow into herself.', link: 'https://www.cufilmfest.arts.columbia.edu/2026-films/oyot' },
 ];
 
 const writing = [
@@ -20,7 +20,14 @@ const writing = [
   { title: 'The Dragon Rider Girl', meta: 'Vertical · Fantasy', info: 'A fantasy vertical centered on a young woman whose bond with a dragon challenges the order built to control them both.' },
   { title: "The Elf Prince's Forbidden First Love", meta: 'Vertical · Fantasy romance', info: 'A forbidden vertical romance between an elven prince and the one person his world insists he cannot choose.' },
   { title: 'Bao Down to Love', meta: 'Feature · Asian family', info: 'A feature about an Asian family, love, food, and the unruly ways people learn to belong.' },
-  { title: 'Bleeding Situation Comedy', meta: 'Short · Coming-of-age comedy', info: 'A young girl who has never learned about menstruation thinks she is dying. With her friends, she launches a chaotic rescue mission — and discovers what is really happening to her body.' },
+  { title: 'Bleeding Situation', meta: 'Short · Comedy', info: 'A young girl who has never learned about menstruation thinks she is dying. With her friends, she launches a chaotic rescue mission — and discovers what is really happening to her body.' },
+];
+
+const press = [
+  { publication: 'CanvasRebel', title: 'Meet Anqi Chen', link: 'https://canvasrebel.com/meet-anqi-chen/' },
+  { publication: 'Bold Journey', title: 'Meet Anqi Chen', link: 'https://boldjourney.com/meet-anqi-chen/' },
+  { publication: 'Gigwise', title: 'Producer Anqi Chen Bridges Asian Independent Film and Global Digital Storytelling', link: 'https://www.gigwise.com/producer-anqi-chen-bridges-asian-independent-film-global-digital-storytelling/' },
+  { publication: 'High on Films', title: "Anqi Chen: Behind DramaWave’s First AI-Live Action Hybrid Production", link: 'https://www.highonfilms.com/anqi-chen-behind-dramawaves-first-ai-live-action-hybrid-production/' },
 ];
 
 function Cursor() {
@@ -92,7 +99,7 @@ export default function Home() {
       <div className="film-list">
         {shortFilms.map((project, index) => <article className="film" key={project.title}>
           <figure><img src={project.image} alt={`${project.title} still or poster`} /></figure>
-          <details className="project-details film-detail"><summary><div><span>0{index + 1}</span><h3>{project.title}{project.cn && <small>{project.cn}</small>}</h3></div><p>{project.role}<br />{project.format}</p></summary><div className="detail-panel"><p>{project.info}</p></div></details>
+          <details className="project-details film-detail"><summary><div><span>0{index + 1}</span><h3>{project.title}{project.cn && <small>{project.cn}</small>}</h3></div><p>{project.role}<br />{project.format}</p></summary><div className="detail-panel"><p>{project.info}</p>{project.link && <a href={project.link} target="_blank" rel="noreferrer">Columbia University Film Festival ↗</a>}</div></details>
         </article>)}
       </div>
 
@@ -111,7 +118,7 @@ export default function Home() {
       <div className="social-block"><p>I’m passionate about rescue dogs. @bubugoesla follows my dog’s life and growth through personal short-form video, brand collaborations, and UGC — concept to final cut.</p><details className="social-detail"><summary>@bubugoesla <span>+</span></summary><div><p>An ongoing social practice built around rescue-dog advocacy, everyday observation, audience connection, and selected brand collaborations.</p><a href="https://www.tiktok.com/@bubugoesla" target="_blank" rel="noreferrer">View TikTok ↗</a></div></details></div>
 
       <Chapter id="press" kicker="Press · 06" title="Press" note="Selected" />
-      <details className="press-block"><summary>Press, screenings &amp; recognition <span>+</span></summary><div><p>Selected features, screenings, and conversations will be added here. For press materials or interview requests, please get in touch.</p><a href="mailto:anqicfilm@gmail.com">Press inquiries ↗</a></div></details>
+      <div className="press-list">{press.map((item, index) => <a href={item.link} target="_blank" rel="noreferrer" key={item.link}><span>0{index + 1}</span><h3>{item.title}</h3><p>{item.publication}</p><b>↗</b></a>)}</div>
     </section>
 
     <section className="contact"><p className="kicker">Contact · 07</p><h2>Let’s make<br /><em>something felt.</em></h2><div className="contact-links"><a href="https://mail.google.com/mail/?view=cm&fs=1&to=anqicfilm@gmail.com" target="_blank" rel="noreferrer"><span>Email</span>anqicfilm@gmail.com ↗</a><a href="https://www.imdb.com/name/nm15097462/?ref_=ext_shr_lnk" target="_blank" rel="noreferrer"><span>IMDb</span>Anqi Chen ↗</a></div></section>
