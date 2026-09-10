@@ -1,29 +1,88 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef } from 'react';
 
-const categories = ['All work', 'Verticals', 'Short films', 'Variety shows', 'Social content'];
-const projects = [
-  { title: 'Neon After Dark', category: 'Verticals', year: '2026', role: 'Executive Producer', image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1800&q=88', color: '#9eb6c2', blurb: 'A cinematic vertical series about ambition, intimacy and the city after midnight.' },
-  { title: 'The Last Summer', category: 'Short films', year: '2025', role: 'Producer', image: 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1800&q=88', color: '#c7b57f', blurb: 'A quiet coming-of-age film set across one fading coastal summer.' },
-  { title: 'Come Play With Us', category: 'Variety shows', year: '2025', role: 'Series Producer', image: 'https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?auto=format&fit=crop&w=1800&q=88', color: '#b24335', blurb: 'A fast, joyful studio format built around music, games and unexpected guests.' },
-  { title: 'Made To Move', category: 'Social content', year: '2026', role: 'Creative Producer', image: 'https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1800&q=88', color: '#c8d5b9', blurb: 'A social-first campaign translating one brand idea into a living content system.' },
-  { title: 'Small Hours', category: 'Short films', year: '2024', role: 'Producer', image: 'https://images.unsplash.com/photo-1440404653325-ab127d49abc1?auto=format&fit=crop&w=1800&q=88', color: '#6c6b70', blurb: 'Two strangers, one overnight train and a conversation that changes its destination.' },
-  { title: 'One Minute City', category: 'Verticals', year: '2025', role: 'Lead Producer', image: 'https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=1800&q=88', color: '#726b8f', blurb: 'Character-led micro stories made for the speed and intimacy of the vertical screen.' },
+const verticals = [
+  { title: 'Ride or Die Billionaire', image: '/assets/ride-or-die.jpg', role: 'Creative Producer', platform: 'DramaBox' },
+  { title: 'Swiftly Racing Girl', image: '/assets/swiftly-racing-girl.png', role: 'Creative Producer', platform: 'DramaBox' },
+  { title: "The Prince's First Love", image: '/assets/the-princes-first-love.png', role: 'Creative Producer', platform: 'ReelShort' },
+  { title: 'All My Bully Wants for Christmas Is Me', image: '/assets/my-bully-christmas.png', role: 'Creative Producer', platform: 'Short-form Drama' },
+  { title: 'Callsign: Legacy', image: '/assets/callsign-legacy.png', role: 'Creative Producer', platform: 'ReelShort' },
 ];
 
-export default function Home() {
-  const [filter, setFilter] = useState('All work');
-  const [selected, setSelected] = useState<(typeof projects)[number] | null>(null);
-  const visible = filter === 'All work' ? projects : projects.filter((p) => p.category === filter);
-  useEffect(() => { document.body.style.overflow = selected ? 'hidden' : ''; return () => { document.body.style.overflow = ''; }; }, [selected]);
+const shortFilms = [
+  { title: 'Still Water', cn: '死水', image: '/assets/still-water.jpg', role: 'Producer', format: 'Short Film' },
+  { title: 'OYOT', cn: '', image: '/assets/oyot.png', role: 'Producer', format: 'Short Film' },
+];
 
+function Cursor() {
+  const dot = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (!window.matchMedia('(pointer: fine)').matches) return;
+    let targetX = -30, targetY = -30, currentX = -30, currentY = -30, frame = 0;
+    const move = (event: MouseEvent) => { targetX = event.clientX; targetY = event.clientY; };
+    const tick = () => {
+      currentX += (targetX - currentX) * 0.18;
+      currentY += (targetY - currentY) * 0.18;
+      if (dot.current) dot.current.style.transform = `translate3d(${currentX - 7}px, ${currentY - 7}px, 0)`;
+      frame = requestAnimationFrame(tick);
+    };
+    window.addEventListener('mousemove', move);
+    frame = requestAnimationFrame(tick);
+    return () => { window.removeEventListener('mousemove', move); cancelAnimationFrame(frame); };
+  }, []);
+  return <div ref={dot} className="cursor-dot" aria-hidden="true" />;
+}
+
+export default function Home() {
   return <main>
-    <header className="site-header"><a className="wordmark" href="#top">YOUR NAME<span>®</span></a><nav><a href="#work">Work</a><a href="#about">About</a></nav><a className="contact-link" href="mailto:hello@yourname.com">Get in touch ↗</a></header>
-    <section className="hero" id="top"><p className="eyebrow">Independent Producer · Los Angeles / Worldwide</p><h1>I produce stories<br />people want to <em>feel.</em></h1><div className="hero-bottom"><p>From vertical series to short films, entertainment formats and social campaigns — I bring ambitious ideas into the real world.</p><span>Selected work<br />2024—2026</span></div></section>
-    <section className="work" id="work"><div className="section-head"><h2>Selected work</h2><div className="filters" role="group" aria-label="Filter projects">{categories.map((category) => <button className={filter === category ? 'active' : ''} key={category} onClick={() => setFilter(category)}>{category}</button>)}</div></div><div className="project-grid">{visible.map((project, index) => <button className={`project-card card-${index % 4}`} key={project.title} onClick={() => setSelected(project)}><div className="project-image" style={{ backgroundColor: project.color }}><img src={project.image} alt="" /><span className="view-project">View project ↗</span></div><div className="project-meta"><h3>{project.title}</h3><p>{project.category} · {project.year}</p></div></button>)}</div></section>
-    <section className="about" id="about"><p className="eyebrow">About</p><h2>Good producing is the invisible architecture behind work that feels effortless.</h2><div className="about-copy"><p>I work from first spark to final delivery — shaping the creative, building the right team, and protecting the idea through every practical decision.</p><div><span>Based in Los Angeles</span><a href="mailto:hello@yourname.com">hello@yourname.com ↗</a><a href="#">Instagram ↗</a></div></div></section>
-    <footer><span>YOUR NAME © 2026</span><a href="#top">Back to top ↑</a></footer>
-    {selected && <div className="project-modal" role="dialog" aria-modal="true" aria-label={selected.title} onClick={() => setSelected(null)}><article onClick={(e) => e.stopPropagation()}><button className="close" onClick={() => setSelected(null)}>Close ×</button><div className="modal-image" style={{ backgroundColor: selected.color }}><img src={selected.image} alt="" /></div><div className="modal-copy"><div><p>{selected.category} · {selected.year}</p><h2>{selected.title}</h2></div><div><p className="role">{selected.role}</p><p>{selected.blurb}</p></div></div></article></div>}
+    <Cursor />
+    <header className="topbar">
+      <a className="monogram" href="#top">AC</a>
+      <nav aria-label="Main navigation"><a href="#about">About</a><a href="#work">Work</a></nav>
+      <a href="mailto:anqicfilm@gmail.com">Email ↗</a>
+    </header>
+
+    <section className="cover" id="top">
+      <div className="cover-meta"><p>Creative Producer<br />&amp; Writer</p><p>Los Angeles<br />Worldwide</p></div>
+      <figure className="portrait"><img src="/assets/anqi-chen.jpg" alt="Portrait of Anqi Chen" /></figure>
+      <h1><span>Anqi</span><span>Chen</span></h1>
+    </section>
+
+    <section className="intro" id="about">
+      <p className="kicker">About · 01</p>
+      <div className="intro-copy">
+        <h2>I work at the intersection of storytelling and emerging technology.</h2>
+        <div>
+          <p>For the past six years, I’ve produced and written short-form and vertical drama for ReelShort, DramaBox, and DramaWave — across traditional live action, AI-hybrid productions, and fully AI-generated formats.</p>
+          <a href="mailto:anqicfilm@gmail.com">anqicfilm@gmail.com ↗</a>
+        </div>
+      </div>
+    </section>
+
+    <section className="work" id="work">
+      <div className="chapter"><p className="kicker">Selected projects · 02</p><h2>Verticals</h2><span>2020—2026</span></div>
+      <div className="poster-grid">
+        {verticals.map((project, index) => <article className={`poster poster-${index + 1}`} key={project.title}>
+          <figure><img src={project.image} alt={`${project.title} poster`} /></figure>
+          <div className="caption"><div><span>{String(index + 1).padStart(2, '0')}</span><h3>{project.title}</h3></div><p>{project.role}<br />{project.platform}</p></div>
+        </article>)}
+      </div>
+
+      <div className="chapter films-chapter"><p className="kicker">Narrative work · 03</p><h2>Short Films</h2><span>Selected</span></div>
+      <div className="film-list">
+        {shortFilms.map((project, index) => <article className="film" key={project.title}>
+          <figure><img src={project.image} alt={`${project.title} still or poster`} /></figure>
+          <div className="film-copy"><div><span>0{index + 1}</span><h3>{project.title}{project.cn && <small>{project.cn}</small>}</h3></div><p>{project.role}<br />{project.format}</p></div>
+        </article>)}
+      </div>
+    </section>
+
+    <section className="contact">
+      <p className="kicker">Contact · 04</p>
+      <h2>Let’s make<br /><em>something felt.</em></h2>
+      <a href="mailto:anqicfilm@gmail.com">anqicfilm@gmail.com ↗</a>
+    </section>
+    <footer><span>ANQI CHEN © 2026</span><span>Creative Producer &amp; Writer</span><a href="#top">Back to top ↑</a></footer>
   </main>;
 }

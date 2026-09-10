@@ -14,18 +14,18 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://producer-portfolio-2026.red-chub-7563.chatgpt.site'),
-  title: 'Your Name — Producer',
-  description: 'Independent producer working across verticals, short films, variety shows and social content.',
+  title: 'Anqi Chen — Creative Producer & Writer',
+  description: 'Creative producer and writer working across short-form, vertical drama, live action and emerging technology.',
   openGraph: {
-    title: 'Your Name — Producer',
-    description: 'Verticals · Short films · Variety shows · Social content',
-    images: ['/og.png'],
+    title: 'Anqi Chen — Creative Producer & Writer',
+    description: 'Storytelling · Vertical drama · Short films · Emerging technology',
+    images: ['/assets/anqi-chen.jpg'],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Your Name — Producer',
-    description: 'Verticals · Short films · Variety shows · Social content',
-    images: ['/og.png'],
+    title: 'Anqi Chen — Creative Producer & Writer',
+    description: 'Storytelling · Vertical drama · Short films · Emerging technology',
+    images: ['/assets/anqi-chen.jpg'],
   },
 };
 
