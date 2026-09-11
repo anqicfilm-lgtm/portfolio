@@ -18,3 +18,6 @@
 
 /* Work menu: scope hover-only affordances to real pointer/hover devices so iOS/touch relies solely on tap state, avoiding the tap-vs-hover ambiguity that delayed opening the dropdown */
 @media(hover:hover) and (pointer:fine){.topbar a:hover{opacity:.45}.work-menu:hover .work-dropdown{opacity:1;visibility:visible;transform:none;pointer-events:auto}}
+
+/* Work menu on mobile: use plain display toggling instead of opacity/visibility/transform transitions, which some WebKit builds fail to repaint reliably inside this fixed, blended header. Tap-only, no scroll interaction. */
+@media(max-width:760px){.work-dropdown{display:none;opacity:1;visibility:visible;transform:none;pointer-events:auto;transition:none}.work-dropdown.is-open{display:flex}}

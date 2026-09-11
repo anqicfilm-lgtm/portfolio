@@ -66,23 +66,11 @@ export default function Home() {
 
   useEffect(() => {
     if (!menuOpen) return;
-    const openedAt = Date.now();
     const handleOutside = (event: PointerEvent) => {
       if (menuRef.current && !menuRef.current.contains(event.target as Node)) closeMenu();
     };
-    // iOS Safari/Chrome fire a synthetic scroll event while the address bar
-    // collapses on the same tap that opens the menu; ignore that brief
-    // window so it doesn't immediately close what the tap just opened.
-    const handleScroll = () => {
-      if (Date.now() - openedAt < 400) return;
-      closeMenu();
-    };
     window.addEventListener('pointerdown', handleOutside);
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => {
-      window.removeEventListener('pointerdown', handleOutside);
-      window.removeEventListener('scroll', handleScroll);
-    };
+    return () => window.removeEventListener('pointerdown', handleOutside);
   }, [menuOpen]);
 
   return <main>
