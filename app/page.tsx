@@ -79,16 +79,24 @@ export default function Home() {
       <a className="monogram" href="#top">AC</a>
       <nav aria-label="Main navigation">
         <a href="#about">About</a>
-        <div className="work-menu" ref={menuRef} onMouseEnter={() => { if (isHoverCapable()) setMenuOpen(true); }} onMouseLeave={() => { if (isHoverCapable()) setMenuOpen(false); }}>
+        <div
+          className="work-menu"
+          ref={menuRef}
+          onMouseEnter={() => { if (isHoverCapable()) setMenuOpen(true); }}
+          onMouseLeave={() => { if (isHoverCapable()) setMenuOpen(false); }}
+          onFocus={() => setMenuOpen(true)}
+          onBlur={(event) => { if (!event.currentTarget.contains(event.relatedTarget as Node)) closeMenu(); }}
+        >
           <button type="button" aria-expanded={menuOpen} onClick={() => setMenuOpen(!menuOpen)}>Work <span>{menuOpen ? '−' : '+'}</span></button>
-          {menuOpen && <div style={{ position: 'fixed', top: 0, left: 0, right: 0, zIndex: 999999, background: 'red', color: 'white', fontSize: 28, fontWeight: 700, padding: '24px 12px', textAlign: 'center' }}>DEBUG: MENU OPEN</div>}
-          <div className={`work-dropdown ${menuOpen ? 'is-open' : ''}`}>
-            <a href="#narrative" onClick={closeMenu}>Narrative work</a>
-            <a href="#verticals" onClick={closeMenu}>Verticals</a>
-            <a href="#writing" onClick={closeMenu}>Writing</a>
-            <a href="#social" onClick={closeMenu}>Social content</a>
-            <a href="#press" onClick={closeMenu}>Press</a>
-          </div>
+          {menuOpen && (
+            <div className="work-dropdown">
+              <a href="#narrative" onClick={closeMenu}>Narrative work</a>
+              <a href="#verticals" onClick={closeMenu}>Verticals</a>
+              <a href="#writing" onClick={closeMenu}>Writing</a>
+              <a href="#social" onClick={closeMenu}>Social content</a>
+              <a href="#press" onClick={closeMenu}>Press</a>
+            </div>
+          )}
         </div>
       </nav>
       <a href="https://mail.google.com/mail/?view=cm&fs=1&to=anqicfilm@gmail.com" target="_blank" rel="noreferrer">Email ↗︎</a>
