@@ -56,13 +56,28 @@ function Chapter({ kicker, title, note, id }: { kicker: string; title: string; n
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const closeMenu = () => setMenuOpen(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!menuOpen) return;
+    const handleOutside = (event: PointerEvent) => {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) closeMenu();
+    };
+    window.addEventListener('pointerdown', handleOutside);
+    window.addEventListener('scroll', closeMenu, { passive: true });
+    return () => {
+      window.removeEventListener('pointerdown', handleOutside);
+      window.removeEventListener('scroll', closeMenu);
+    };
+  }, [menuOpen]);
+
   return <main>
     <Cursor />
     <header className="topbar">
       <a className="monogram" href="#top">AC</a>
       <nav aria-label="Main navigation">
         <a href="#about">About</a>
-        <div className="work-menu" onMouseEnter={() => setMenuOpen(true)} onMouseLeave={() => setMenuOpen(false)}>
+        <div className="work-menu" ref={menuRef} onMouseEnter={() => setMenuOpen(true)} onMouseLeave={() => setMenuOpen(false)}>
           <button type="button" aria-expanded={menuOpen} onClick={() => setMenuOpen(!menuOpen)}>Work <span>{menuOpen ? '−' : '+'}</span></button>
           <div className={`work-dropdown ${menuOpen ? 'is-open' : ''}`}>
             <a href="#narrative" onClick={closeMenu}>Narrative work</a>
