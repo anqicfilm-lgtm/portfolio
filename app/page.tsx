@@ -5,14 +5,15 @@ import { useEffect, useRef, useState } from 'react';
 const verticals = [
   { title: 'Ride or Die Billionaire', image: '/assets/ride-or-die.jpg', role: 'Executive Producer', platform: 'DramaWave', info: 'Vertical drama · Executive produced by Anqi Chen.', link: 'https://www.imdb.com/title/tt43643427/?ref_=nm_knf_c_3' },
   { title: 'Swiftly Racing Girl', image: '/assets/swiftly-racing-girl.png', role: 'Executive Producer', platform: 'DramaWave', info: 'Vertical drama · Executive produced by Anqi Chen.', link: 'https://www.imdb.com/title/tt43688071/?ref_=ext_shr_lnk' },
-  { title: "The Prince's First Love", image: '/assets/the-princes-first-love.png', role: 'Line Producer', platform: 'ReelShort', info: 'A queer campus romance produced for a serialized, mobile-first audience.', link: '' },
-  { title: 'All My Bully Wants for Christmas Is Me', image: '/assets/my-bully-christmas.png', role: 'UPM', platform: 'DramaWave', info: 'Vertical holiday drama · Unit Production Manager.', link: '' },
-  { title: 'Callsign: Legacy', image: '/assets/callsign-legacy.png', role: 'UPM', platform: 'ReelShort', info: 'Vertical military drama · Unit Production Manager.', link: '' },
+  { title: "The Prince's First Love", image: '/assets/the-princes-first-love.png', role: 'Line Producer', platform: 'ReelShort', info: 'A queer campus romance produced for a serialized, mobile-first audience.', link: 'https://www.imdb.com/title/tt39164607/?ref_=ext_shr_lnk' },
+  { title: 'All My Bully Wants for Christmas Is Me', image: '/assets/my-bully-christmas.png', role: 'UPM', platform: 'DramaWave', info: 'Vertical holiday drama · Unit Production Manager.', link: 'https://www.imdb.com/title/tt39314619/?ref_=ext_shr_lnk' },
+  { title: 'Callsign: Legacy', image: '/assets/callsign-legacy.png', role: 'UPM', platform: 'ReelShort', info: 'Vertical military drama · Unit Production Manager.', link: 'https://www.imdb.com/title/tt38986167/?ref_=ext_shr_lnk' },
+  { title: 'Sleep with Me Mortal!', image: '/assets/sleep-with-me-mortal.png', role: 'UPM', platform: 'ReelShort', info: 'Vertical fantasy romance drama · Unit Production Manager.', link: 'https://www.imdb.com/title/tt38266612/?ref_=ext_shr_lnk' },
 ];
 
 const shortFilms = [
-  { title: 'Still Water', cn: '死水', image: '/assets/still-water.jpg', role: 'Producer', format: 'Short Film', info: 'An intimate story between two women — tracing closeness, memory, and the distance that grows between them.', link: '' },
-  { title: 'OYOT', cn: '', image: '/assets/oyot.png', role: 'Producer', format: 'Short Film', info: 'A Korean immigrant girl visits her estranged father in the desert to reconnect over Christmas. Confronted by his new life, she must face the fractures between them, let go, and grow into herself.', link: 'https://www.cufilmfest.arts.columbia.edu/2026-films/oyot' },
+  { title: 'Still Water', cn: '死水', image: '/assets/still-water.jpg', role: 'Producer', format: 'Short Film', info: 'An intimate story between two women — tracing closeness, memory, and the distance that grows between them.', link: 'https://www.imdb.com/title/tt43674379/?ref_=ext_shr_lnk', linkLabel: 'IMDb' },
+  { title: 'OYOT', cn: '', image: '/assets/oyot.png', role: 'Producer', format: 'Short Film', info: 'A Korean immigrant girl visits her estranged father in the desert to reconnect over Christmas. Confronted by his new life, she must face the fractures between them, let go, and grow into herself.', link: 'https://www.cufilmfest.arts.columbia.edu/2026-films/oyot', linkLabel: 'Columbia University Film Festival' },
 ];
 
 const writing = [
@@ -125,7 +126,7 @@ export default function Home() {
       <div className="film-list">
         {shortFilms.map((project, index) => <article className="film" key={project.title}>
           <figure><img src={project.image} alt={`${project.title} still or poster`} /></figure>
-          <details className="project-details film-detail"><summary><div><span>0{index + 1}</span><h3>{project.title}{project.cn && <small>{project.cn}</small>}</h3></div><p>{project.role}<br />{project.format}</p></summary><div className="detail-panel"><p>{project.info}</p>{project.link && <a href={project.link} target="_blank" rel="noreferrer">Columbia University Film Festival ↗︎</a>}</div></details>
+          <details className="project-details film-detail"><summary><div><span>0{index + 1}</span><h3>{project.title}{project.cn && <small>{project.cn}</small>}</h3></div><p>{project.role}<br />{project.format}</p></summary><div className="detail-panel"><p>{project.info}</p>{project.link && <a href={project.link} target="_blank" rel="noreferrer">{project.linkLabel} ↗︎</a>}</div></details>
         </article>)}
       </div>
 
