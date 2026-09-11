@@ -103,7 +103,7 @@ export default function Home() {
         </article>)}
       </div>
 
-      <Chapter id="verticals" kicker="Selected projects · 03" title="Verticals" note="2020—2026" />
+      <Chapter id="verticals" kicker="Selected projects · 03" title="Verticals" note="SELECTED" />
       <div className="poster-grid">
         {verticals.map((project, index) => <article className={`poster poster-${index + 1}`} key={project.title}>
           <figure><img src={project.image} alt={`${project.title} poster`} /></figure>
@@ -115,7 +115,7 @@ export default function Home() {
       <div className="writing-list">{writing.map((project, index) => <details className="text-project" key={project.title}><summary><span>0{index + 1}</span><h3>{project.title}</h3><p>{project.meta}</p><b>+</b></summary><div><p>{project.info}</p></div></details>)}</div>
 
       <Chapter id="social" kicker="Social content · 05" title="In Practice" note="Ongoing" />
-      <div className="social-block"><p>I’m passionate about rescue dogs. @bubugoesla follows my dog’s life and growth through personal short-form video, brand collaborations, and UGC — concept to final cut.</p><details className="social-detail"><summary>@bubugoesla <span>+</span></summary><div><p>An ongoing social practice built around rescue-dog advocacy, everyday observation, audience connection, and selected brand collaborations.</p><a href="https://www.tiktok.com/@bubugoesla" target="_blank" rel="noreferrer">View TikTok ↗︎</a></div></details></div>
+      <div className="social-block"><p>I’m passionate about rescue dogs. @bubugoesla follows my dog’s life and growth through personal short-form video, brand collaborations, and UGC — concept to final cut.</p><details className="social-detail"><summary>@bubugoesla <span>+</span></summary><div><p>An ongoing social practice built around rescue-dog advocacy, everyday observation, audience connection, and selected brand collaborations.</p><a href="https://www.instagram.com/bubugoesla" target="_blank" rel="noreferrer">View Instagram ↗︎</a></div></details></div>
 
       <Chapter id="press" kicker="Press · 06" title="Press" note="Selected" />
       <div className="press-list">{press.map((item, index) => <a href={item.link} target="_blank" rel="noreferrer" key={item.link}><span>0{index + 1}</span><h3>{item.title}</h3><p>{item.publication}</p><b>↗︎</b></a>)}</div>
