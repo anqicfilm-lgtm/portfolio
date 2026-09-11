@@ -73,7 +73,7 @@ export default function Home() {
           </div>
         </div>
       </nav>
-      <a href="https://mail.google.com/mail/?view=cm&fs=1&to=anqicfilm@gmail.com" target="_blank" rel="noreferrer">Email ↗</a>
+      <a href="https://mail.google.com/mail/?view=cm&fs=1&to=anqicfilm@gmail.com" target="_blank" rel="noreferrer">Email ↗︎</a>
     </header>
 
     <section className="cover" id="top">
@@ -89,7 +89,7 @@ export default function Home() {
         <div className="bio-column">
           <p>Six years producing from page to screen — development, scripts, budgets, crews, vendors, AI and CGI-integrated post-production, start to finish. I work closely with writers and directors to shape story and protect creative vision, lead teams independently, and stay ahead of where audience taste is headed.</p>
           <div className="education"><p>MFA, Creative Producing<br />Columbia University</p><p>BA, Film &amp; TV Producing<br />Communication University of China</p><p>English / Mandarin</p></div>
-          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=anqicfilm@gmail.com" target="_blank" rel="noreferrer">anqicfilm@gmail.com ↗</a>
+          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=anqicfilm@gmail.com" target="_blank" rel="noreferrer">anqicfilm@gmail.com ↗︎</a>
         </div>
       </div>
     </section>
@@ -99,7 +99,7 @@ export default function Home() {
       <div className="film-list">
         {shortFilms.map((project, index) => <article className="film" key={project.title}>
           <figure><img src={project.image} alt={`${project.title} still or poster`} /></figure>
-          <details className="project-details film-detail"><summary><div><span>0{index + 1}</span><h3>{project.title}{project.cn && <small>{project.cn}</small>}</h3></div><p>{project.role}<br />{project.format}</p></summary><div className="detail-panel"><p>{project.info}</p>{project.link && <a href={project.link} target="_blank" rel="noreferrer">Columbia University Film Festival ↗</a>}</div></details>
+          <details className="project-details film-detail"><summary><div><span>0{index + 1}</span><h3>{project.title}{project.cn && <small>{project.cn}</small>}</h3></div><p>{project.role}<br />{project.format}</p></summary><div className="detail-panel"><p>{project.info}</p>{project.link && <a href={project.link} target="_blank" rel="noreferrer">Columbia University Film Festival ↗︎</a>}</div></details>
         </article>)}
       </div>
 
@@ -107,7 +107,7 @@ export default function Home() {
       <div className="poster-grid">
         {verticals.map((project, index) => <article className={`poster poster-${index + 1}`} key={project.title}>
           <figure><img src={project.image} alt={`${project.title} poster`} /></figure>
-          <details className="project-details"><summary><div><span>{String(index + 1).padStart(2, '0')}</span><h3>{project.title}</h3></div><p>{project.role}<br />{project.platform}</p></summary><div className="detail-panel"><p>{project.info}</p>{project.link && <a href={project.link} target="_blank" rel="noreferrer">IMDb ↗</a>}</div></details>
+          <details className="project-details"><summary><div><span>{String(index + 1).padStart(2, '0')}</span><h3>{project.title}</h3></div><p>{project.role}<br />{project.platform}</p></summary><div className="detail-panel"><p>{project.info}</p>{project.link && <a href={project.link} target="_blank" rel="noreferrer">IMDb ↗︎</a>}</div></details>
         </article>)}
       </div>
 
@@ -115,13 +115,13 @@ export default function Home() {
       <div className="writing-list">{writing.map((project, index) => <details className="text-project" key={project.title}><summary><span>0{index + 1}</span><h3>{project.title}</h3><p>{project.meta}</p><b>+</b></summary><div><p>{project.info}</p></div></details>)}</div>
 
       <Chapter id="social" kicker="Social content · 05" title="In Practice" note="Ongoing" />
-      <div className="social-block"><p>I’m passionate about rescue dogs. @bubugoesla follows my dog’s life and growth through personal short-form video, brand collaborations, and UGC — concept to final cut.</p><details className="social-detail"><summary>@bubugoesla <span>+</span></summary><div><p>An ongoing social practice built around rescue-dog advocacy, everyday observation, audience connection, and selected brand collaborations.</p><a href="https://www.tiktok.com/@bubugoesla" target="_blank" rel="noreferrer">View TikTok ↗</a></div></details></div>
+      <div className="social-block"><p>I’m passionate about rescue dogs. @bubugoesla follows my dog’s life and growth through personal short-form video, brand collaborations, and UGC — concept to final cut.</p><details className="social-detail"><summary>@bubugoesla <span>+</span></summary><div><p>An ongoing social practice built around rescue-dog advocacy, everyday observation, audience connection, and selected brand collaborations.</p><a href="https://www.tiktok.com/@bubugoesla" target="_blank" rel="noreferrer">View TikTok ↗︎</a></div></details></div>
 
       <Chapter id="press" kicker="Press · 06" title="Press" note="Selected" />
-      <div className="press-list">{press.map((item, index) => <a href={item.link} target="_blank" rel="noreferrer" key={item.link}><span>0{index + 1}</span><h3>{item.title}</h3><p>{item.publication}</p><b>↗</b></a>)}</div>
+      <div className="press-list">{press.map((item, index) => <a href={item.link} target="_blank" rel="noreferrer" key={item.link}><span>0{index + 1}</span><h3>{item.title}</h3><p>{item.publication}</p><b>↗︎</b></a>)}</div>
     </section>
 
-    <section className="contact"><p className="kicker">Contact · 07</p><h2>Let’s make<br /><em>something felt.</em></h2><div className="contact-links"><a href="https://mail.google.com/mail/?view=cm&fs=1&to=anqicfilm@gmail.com" target="_blank" rel="noreferrer"><span>Email</span>anqicfilm@gmail.com ↗</a><a href="https://www.imdb.com/name/nm15097462/?ref_=ext_shr_lnk" target="_blank" rel="noreferrer"><span>IMDb</span>Anqi Chen ↗</a></div></section>
+    <section className="contact"><p className="kicker">Contact · 07</p><h2>Let’s make<br /><em>something felt.</em></h2><div className="contact-links"><a href="https://mail.google.com/mail/?view=cm&fs=1&to=anqicfilm@gmail.com" target="_blank" rel="noreferrer"><span>Email</span>anqicfilm@gmail.com ↗︎</a><a href="https://www.imdb.com/name/nm15097462/?ref_=ext_shr_lnk" target="_blank" rel="noreferrer"><span>IMDb</span>Anqi Chen ↗︎</a></div></section>
     <footer><span>ANQI CHEN © 2026</span><span>Creative Producer &amp; Writer</span><a href="#top">Back to top ↑</a></footer>
   </main>;
 }
