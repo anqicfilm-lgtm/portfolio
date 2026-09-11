@@ -81,6 +81,7 @@ export default function Home() {
         <a href="#about">About</a>
         <div className="work-menu" ref={menuRef} onMouseEnter={() => { if (isHoverCapable()) setMenuOpen(true); }} onMouseLeave={() => { if (isHoverCapable()) setMenuOpen(false); }}>
           <button type="button" aria-expanded={menuOpen} onClick={() => setMenuOpen(!menuOpen)}>Work <span>{menuOpen ? '−' : '+'}</span></button>
+          {menuOpen && <div style={{ position: 'fixed', top: 0, left: 0, right: 0, zIndex: 999999, background: 'red', color: 'white', fontSize: 28, fontWeight: 700, padding: '24px 12px', textAlign: 'center' }}>DEBUG: MENU OPEN</div>}
           <div className={`work-dropdown ${menuOpen ? 'is-open' : ''}`}>
             <a href="#narrative" onClick={closeMenu}>Narrative work</a>
             <a href="#verticals" onClick={closeMenu}>Verticals</a>
