@@ -53,6 +53,12 @@ function Chapter({ kicker, title, note, id }: { kicker: string; title: string; n
   return <div className="chapter" id={id}><p className="kicker">{kicker}</p><h2>{title}</h2><span>{note}</span></div>;
 }
 
+// iOS Safari/Chrome synthesize a "mouseover" before "click" on every tap, so
+// onMouseEnter opening the Work menu right before onClick's toggle sees it
+// already open and immediately closes it again. Only trust real hover intent
+// from an actual mouse.
+const isHoverCapable = () => typeof window !== 'undefined' && window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const closeMenu = () => setMenuOpen(false);
@@ -85,7 +91,7 @@ export default function Home() {
       <a className="monogram" href="#top">AC</a>
       <nav aria-label="Main navigation">
         <a href="#about">About</a>
-        <div className="work-menu" ref={menuRef} onMouseEnter={() => setMenuOpen(true)} onMouseLeave={() => setMenuOpen(false)}>
+        <div className="work-menu" ref={menuRef} onMouseEnter={() => { if (isHoverCapable()) setMenuOpen(true); }} onMouseLeave={() => { if (isHoverCapable()) setMenuOpen(false); }}>
           <button type="button" aria-expanded={menuOpen} onClick={() => setMenuOpen(!menuOpen)}>Work <span>{menuOpen ? '−' : '+'}</span></button>
           <div className={`work-dropdown ${menuOpen ? 'is-open' : ''}`}>
             <a href="#narrative" onClick={closeMenu}>Narrative work</a>
