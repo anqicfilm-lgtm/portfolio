@@ -20,4 +20,4 @@
 @media(hover:hover) and (pointer:fine){.topbar a:hover{opacity:.45}}
 
 /* Work dropdown is now conditionally rendered by React (mounted only while open) rather than always-present with a toggled class, so no show/hide CSS is needed - existence in the DOM is the show/hide. On mobile it's pinned to the viewport below the topbar instead of positioned relative to the button. */
-@media(max-width:760px){.work-dropdown{position:fixed;top:56px;left:15px;right:15px;width:auto;z-index:50}}
+@media(max-width:760px){.work-dropdown{position:fixed;top:56px;left:50%;transform:translateX(-50%);width:200px;z-index:50}}
