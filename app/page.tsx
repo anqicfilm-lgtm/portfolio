@@ -111,7 +111,7 @@ export default function Home() {
     <section className="intro" id="about">
       <p className="kicker">About · 01</p>
       <div className="intro-copy">
-        <h2>Where story meets new production technology.</h2>
+        <h2>Story first. Then everything it takes to make it.</h2>
         <div className="bio-column">
           <p>Producer of independent film, microdramas, and AI–live action hybrid productions. Six years taking stories from development to delivery — protecting the creative vision and building for where audiences are headed.</p>
           <div className="education"><p>MFA, Creative Producing<br />Columbia University</p><p>BA, Film &amp; TV Producing<br />Communication University of China</p><p>English / Mandarin</p></div>
