@@ -144,7 +144,7 @@ export default function Home() {
       <div className="press-list">{press.map((item, index) => <a href={item.link} target="_blank" rel="noreferrer" key={item.link}><span>0{index + 1}</span><h3>{item.title}</h3><p>{item.publication}</p><b>↗︎</b></a>)}</div>
     </section>
 
-    <section className="contact"><p className="kicker">Contact · 06</p><h2>Let’s make<br /><em>something felt.</em></h2><div className="contact-links"><a href="https://mail.google.com/mail/?view=cm&fs=1&to=anqicfilm@gmail.com" target="_blank" rel="noreferrer"><span>Email</span>anqicfilm@gmail.com ↗︎</a><a href="https://www.imdb.com/name/nm15097462/?ref_=ext_shr_lnk" target="_blank" rel="noreferrer"><span>IMDb</span>Anqi Chen ↗︎</a></div></section>
+    <section className="contact"><p className="kicker">Contact · 06</p><h2>Have a story?<br /><em>Let’s make it land.</em></h2><div className="contact-links"><a href="https://mail.google.com/mail/?view=cm&fs=1&to=anqicfilm@gmail.com" target="_blank" rel="noreferrer"><span>Email</span>anqicfilm@gmail.com ↗︎</a><a href="https://www.imdb.com/name/nm15097462/?ref_=ext_shr_lnk" target="_blank" rel="noreferrer"><span>IMDb</span>Anqi Chen ↗︎</a></div></section>
     <footer><span>ANQI CHEN © 2026</span><span>Creative Producer &amp; Writer</span><a href="#top">Back to top ↑</a></footer>
   </main>;
 }
