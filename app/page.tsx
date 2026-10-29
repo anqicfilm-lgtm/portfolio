@@ -64,22 +64,29 @@ export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const closeMenu = () => setMenuOpen(false);
   const menuRef = useRef<HTMLDivElement>(null);
+  const closeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const cancelScheduledClose = () => {
+    if (closeTimerRef.current) clearTimeout(closeTimerRef.current);
+    closeTimerRef.current = null;
+  };
+
+  const scheduleClose = () => {
+    if (!isHoverCapable()) return;
+    cancelScheduledClose();
+    closeTimerRef.current = setTimeout(closeMenu, 180);
+  };
 
   useEffect(() => {
     if (!menuOpen) return;
     const handleOutside = (event: PointerEvent) => {
       if (menuRef.current && !menuRef.current.contains(event.target as Node)) closeMenu();
     };
-    const handlePointerMove = (event: PointerEvent) => {
-      if (isHoverCapable() && menuRef.current && !menuRef.current.contains(event.target as Node)) closeMenu();
-    };
     window.addEventListener('pointerdown', handleOutside);
-    window.addEventListener('pointermove', handlePointerMove);
-    return () => {
-      window.removeEventListener('pointerdown', handleOutside);
-      window.removeEventListener('pointermove', handlePointerMove);
-    };
+    return () => window.removeEventListener('pointerdown', handleOutside);
   }, [menuOpen]);
+
+  useEffect(() => () => cancelScheduledClose(), []);
 
   return <main>
     <Cursor />
@@ -90,8 +97,8 @@ export default function Home() {
         <div
           className="work-menu"
           ref={menuRef}
-          onMouseEnter={() => { if (isHoverCapable()) setMenuOpen(true); }}
-          onMouseLeave={() => { if (isHoverCapable()) setMenuOpen(false); }}
+          onMouseEnter={() => { if (isHoverCapable()) { cancelScheduledClose(); setMenuOpen(true); } }}
+          onMouseLeave={scheduleClose}
           onFocus={() => setMenuOpen(true)}
           onBlur={(event) => { if (!event.currentTarget.contains(event.relatedTarget as Node)) closeMenu(); }}
         >
