@@ -17,8 +17,8 @@ const shortFilms = [
 ];
 
 const writing = [
-  { title: 'Married to My Mafia Rival', meta: 'Interactive Game Chapters · Mafia Romance', info: 'A contract marriage pulls two guarded people into a dangerous world where power, loyalty, and desire keep changing the terms.' },
-  { title: 'The Dragon Rider Girl', meta: 'Interactive Game Chapters · Fantasy', info: 'Interactive fantasy game chapters centered on a young woman whose bond with a dragon challenges the order built to control them both.' },
+  { title: 'Married to My Mafia Rival', meta: 'Interactive Game · Chapters · Mafia Romance', info: 'A contract marriage pulls two guarded people into a dangerous world where power, loyalty, and desire keep changing the terms.' },
+  { title: 'The Dragon Rider Girl', meta: 'Interactive Game · Chapters · Fantasy', info: 'Interactive fantasy game chapters centered on a young woman whose bond with a dragon challenges the order built to control them both.' },
   { title: "The Elf Prince's Forbidden First Love", meta: 'Vertical · Fantasy romance', info: 'A forbidden vertical romance between an elven prince and the one person his world insists he cannot choose.' },
   { title: 'Bao Down to Love', meta: 'Feature · Asian family', info: 'A feature about an Asian family, love, food, and the unruly ways people learn to belong.' },
   { title: 'Bleeding Situation', meta: 'Short · Comedy', info: 'A young girl who has never learned about menstruation thinks she is dying. With her friends, she launches a chaotic rescue mission — and discovers what is really happening to her body.' },
