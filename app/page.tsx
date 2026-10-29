@@ -70,8 +70,15 @@ export default function Home() {
     const handleOutside = (event: PointerEvent) => {
       if (menuRef.current && !menuRef.current.contains(event.target as Node)) closeMenu();
     };
+    const handlePointerMove = (event: PointerEvent) => {
+      if (isHoverCapable() && menuRef.current && !menuRef.current.contains(event.target as Node)) closeMenu();
+    };
     window.addEventListener('pointerdown', handleOutside);
-    return () => window.removeEventListener('pointerdown', handleOutside);
+    window.addEventListener('pointermove', handlePointerMove);
+    return () => {
+      window.removeEventListener('pointerdown', handleOutside);
+      window.removeEventListener('pointermove', handlePointerMove);
+    };
   }, [menuOpen]);
 
   return <main>
