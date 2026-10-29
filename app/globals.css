@@ -21,3 +21,5 @@
 
 /* Work dropdown is now conditionally rendered by React (mounted only while open) rather than always-present with a toggled class, so no show/hide CSS is needed - existence in the DOM is the show/hide. On mobile it's pinned to the viewport below the topbar instead of positioned relative to the button. */
 @media(max-width:760px){.work-dropdown{position:fixed;top:56px;left:50%;transform:translateX(-50%);width:200px;z-index:50}}
+
+.project-details .project-genre{grid-column:2;margin:8px 0 0;font:9px/1.5 Arial,sans-serif;letter-spacing:.07em;text-transform:uppercase;color:var(--muted, #666)}
