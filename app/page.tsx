@@ -117,7 +117,7 @@ export default function Home() {
     </header>
 
     <section className="cover" id="top">
-      <div className="cover-meta"><p>Creative Producer<br />&amp; Writer</p><p>Los Angeles</p></div>
+      <div className="cover-meta"><p>Producer</p><p>Los Angeles</p></div>
       <figure className="portrait"><img src="/assets/anqi-chen.jpg" alt="Portrait of Anqi Chen" /></figure>
       <h1><span>Anqi</span><span>Chen</span></h1>
     </section>
